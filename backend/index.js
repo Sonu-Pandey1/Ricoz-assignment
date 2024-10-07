@@ -6,23 +6,18 @@ const dbConnect = require("./conf/db/dbConfig")
 const app = express();
 let PORT =process.env.PORT || 5000
 
+app.use(express.json());
+
+app.use("/api",userRouter)
+
+// testing url
 app.use("/",(req,res)=>{
     // console.log(res)
     res.send("jay shree ram ")
 })
 
-// const connectToDatabase = async () => {
-//     try {
-//         await dbConnect();
-//         console.log("MongoDB Connected");
-//     } catch (err) {
-//         console.log("MongoDB Connection Error:", err);
-//     }
-// };
 
-// connectToDatabase();
-
-// connect to DB
+// connect to mongoDB
 dbConnect();
 
 app.listen(PORT,()=>{
